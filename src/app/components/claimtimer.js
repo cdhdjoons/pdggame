@@ -126,51 +126,64 @@ export default function ClaimTimer() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
             >
-                <div className="w-full flex justify-center items-center relative">
-                    <div className="w-[28vmax] max-w-[450px] aspect-[428/447] relative">
-                        <Image
-                            src="/image/jet_balance.png"
-                            alt="main logo"
-                            fill
-                            style={{ objectFit: "cover" }}
-                        />
-                        <p className={` absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#05FF6D] text-[2.8vmax] sm:text-[2.2vmax]
-             [-webkit-text-stroke:0.6px_black]  mt-1 `}>{n2o >= 1000000 ? `${n2o / 1000000}m` : n2o >= 1000 ? `${n2o / 1000}k` : n2o}</p>
-                    </div>
-                </div>
-                <div className="w-full flex justify-center items-center relative">
-                    <div className="w-[78%] sm:w-[80%] aspect-[510/105] relative flex justify-start">
-                        <div className=" absolute w-full aspect-[510/127]  ">
-                            <Image
-                                src="/image/farmjetbar.png"
-                                alt="mana bar"
-                                fill
-                                style={{ objectFit: "cover" }}
-                            />
-                        </div>
-                        <p className=" absolute top-[36%] -translate-y-1/2 right-[6%] text-white text-[1.5vmax] sm:text-[0.8vmax] [-webkit-text-stroke:0.2px_black]">{formatTime(time)}</p>
-                        {onClaim ? <p onClick={startTimer} className=" absolute top-[75%] -translate-y-1/2 right-[6%] text-[#34DD00] text-[1.5vmax] xs:text-[1.35vmax] sm:text-[0.8vmax] [-webkit-text-stroke:0.2px_black]
-                        active:scale-90 transition-transform duration-200">Claim now</p>
-                            :
-                            <p onClick={startTimer} className=" absolute top-[70%] -translate-y-1/2 right-[5%] text-[#646464] text-[1.5vmax] xs:text-[1.35vmax] sm:text-[0.8vmax] [-webkit-text-stroke:0.2px_black]
-                        active:scale-90 transition-transform duration-200">Claim now</p>}
-                        <div className=" h-full w-[68%] relative flex flex-col justify-evenly py-[2%] items-end  ">
-                            <p className=" w-[65%] text-center text-white text-[3.2vmin] sm:text-[1.5vmin] [-webkit-text-stroke:0.3px_black] mt-1">Farming 2000 JET</p>
-                            <div className="w-[65%] h-[35%] border border-[#01FF56] relative ">
-                                <div className="w-full bg-[#18FE3B] h-full absolute left-0" style={{ width: progressWidth }}></div>
+                <div className="w-full h-[40%] flex justify-center items-center relative">
+                    <div className=" bg-boxBg w-[90%] h-full max-w-[450px] rounded-[23px] flex flex-col justify-between overflow-hidden">
+                        <div className="w-full max-w-[450px] px-[3%] py-[2%] rounded-[23px] flex items-center  relative active:scale-95 transition-transform duration-100 ">
+                            <div className="w-[5vmax] aspect-[59/59] relative">
+                                <Image
+                                    src="/image/p_icon2.png"
+                                    alt="main logo"
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
+                            </div>
+                            <div className=" w-full flex flex-col px-[5%]">
+                                <div className="flex justify-between items-center">
+                                    <p className={` text-white text-[1.8vmax] sm:text-[2vmin]
+               mt-1 `}>{n2o >= 1000000 ? `${n2o / 1000000}m` : n2o >= 1000 ? `${n2o / 1000}k` : n2o} PDG</p>
+                                    <p className="text-white text-[1.6vmax] sm:text-[2vmin] opacity-20">Score</p>
+                                </div>
+                                <div className=" flex justify-around">
+                                    <p className="w-full text-[1.6vmax] sm:text-[2vmin] -rotate-0 text-white bg-clip-text text-transparent ">Check your Score</p>
+                                </div>
                             </div>
                         </div>
+                        <div className="w-full h-[80%] relative bg-white">
+                            <Image
+                                src="/image/pdg_main.png"
+                                alt="main logo"
+                                layout="fill"
+                                objectFit="contain"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="w-full h-[30%] flex justify-center items-center relative  ">
+                    <div className="w-[90%] py-[2%] h-full sm:w-[90%] relative flex flex-col justify-between rounded-[23px] bg-boxBg">
+                        <div className="w-full flex justify-around items-center  ">
+                            <p className="  text-[#06F7A1] text-[4.5vmin] sm:text-[2.5vmin] font-bold">Earn 2000 PDG</p>
+                            <p className=" text-[#808080] text-[4.5vmin] sm:text-[2.5vmin] font-bold ">{formatTime(time)}</p>
+                        </div>
+                        <p className="text-white opacity-50 text-center text-[3vmin] sm:text-[1.5vmin]">Enter your favorite restaurant name and get PDG.</p>
+                        <div className="w-full relative flex justify-center py-[2%] items-end ">
+                            <div className="w-[65%] h-[1vmin] xs:h-[0.8vmin] sm:h-[0.7vmin] rounded-3xl bg-[#787880] relative ">
+                                <div className="w-full bg-[#007AFF] rounded-3xl h-full absolute left-0" style={{ width: progressWidth }}></div>
+                                <div className="w-[4vmin] sm:w-[2.5vmin] aspect-[1/1] bg-white rounded-full absolute -top-[150%] xs:-top-[200%] sm:-top-[150%]" style={{ left: progressWidth }}></div>
+                            </div>
+                        </div>
+                        {onClaim ? <p onClick={startTimer} className=" border-t-[0.5px] border-t-borderBlack text-center text-[#007AFF] text-[2.3vmax] xs:text-[2.35vmax] sm:text-[1.5vmax]
+                        active:scale-90 transition-transform duration-200">Claim now</p>
+                            :
+                            <p onClick={startTimer} className=" border-t-[0.5px] border-t-borderBlack text-center text-[#646464] text-[2.3vmax] xs:text-[2.35vmax] sm:text-[1.5vmax]
+                        active:scale-90 transition-transform duration-200">Claim now</p>}
                     </div>
                 </div>
 
-                <Link href="/balance" className="w-[85%] sm:w-[85%] aspect-[510/102] flex justify-center items-center relative active:scale-90 transition-transform duration-200">
-                    <p className=" ml-[15%] mb-[2%] bg-gradient-to-r from-[#F92F2F] to-[#E7EAFF] bg-clip-text text-transparent text-[3vmin] sm:text-[1.3vmin] z-10">Now Get More Sky Licence!!</p>
-                    <Image
-                        src="/image/getjetbar.png"
-                        alt="main logo"
-                        fill
-                        style={{ objectFit: "cover" }}
-                    />
+                <Link href="/balance" className=" py-[3%] bg-boxBg rounded-[23px] w-[90%] sm:w-[90%] flex flex-col justify-center items-center relative">
+                    <p className=" text-white text-[2.3vmax] xs:text-[2.35vmax] sm:text-[1.5vmax] z-10 font-bold">Get More Tickets</p>
+                    <p className=" text-white opacity-50 text-[3vmin] sm:text-[1.3vmin] z-10 ">Exchange your PDG for tickets to enter the game.</p>
+                    <p className=" w-full py-[2%] mt-[4%] border-t-[0.5px] border-t-borderBlack text-center text-[#FF453A] text-[2.3vmax] xs:text-[2.35vmax] sm:text-[1.5vmax]
+                        active:scale-90 transition-transform duration-200">Go to get tickets</p>
                 </Link>
             </motion.div>
         </AnimatePresence>

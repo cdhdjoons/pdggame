@@ -1,40 +1,47 @@
 import Image from "next/image";
 import Link from "next/link";
 import ClaimTimer from "./components/claimtimer";
+import Intro from "./components/intro";
 
 
 export default function Home() {
   return (
     <div className=" w-full h-full">
-      <div className=" w-full h-full max-w-[500px] pt-[10%] relative flex flex-col justify-evenly " >
-        <div className="w-full flex justify-center items-center relative">
-          <div className="w-[45vmax] max-w-[400px] aspect-[543/183] relative ">
-            <Image
-              src="/image/jet_logo.png"
-              alt="main logo"
-              fill
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          </div>
-        </div>
-        <div className="w-full flex justify-center items-center relative">
-          <a href="https://x.com/JFT_official_X" target="_blank" rel="noopener noreferrer">
-            <div className="w-[35vmax] max-w-[450px] flex items-center aspect-[501/87] relative active:scale-95 transition-transform duration-100 ">
-              <Image
-                src="/image/jet_btn.png"
-                alt="main logo"
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-              />
-              <p className="w-full text-center text-[1.6vmax] sm:text-[2vmin] -rotate-0
-        bg-gradient-to-r from-[#A9FF8A] via-[#77FF8B] to-[#45C060] bg-clip-text text-transparent ">To Earn Coin, Join in Twitter</p>
+      <div className=" w-full h-full max-w-[500px] pt-[3%] relative flex flex-col " >
+        <Intro/>
+        <div className="w-full flex justify-center  relative ">
+          <a href="https://x.com/JFT_official_X" target="_blank" rel="noopener noreferrer" className="w-[90%] block">
+            <div className="w-full max-w-[450px] px-[3%] bg-boxBg rounded-[23px] flex items-center aspect-[342/75] relative active:scale-95 transition-transform duration-100 ">
+              <div className="w-[5vmax] sm:w-[4vmax] aspect-[59/59] relative">
+                <Image
+                  src="/image/x_icon.png"
+                  alt="main logo"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className=" w-full flex flex-col px-[5%]">
+                <div className="flex justify-between">
+                  <p className="text-white text-[1.6vmax] sm:text-[2vmin] xs:text-[4vmin]">X</p>
+                  <p className="text-white text-[1.6vmax] sm:text-[2vmin] xs:text-[4vmin] opacity-20">Lets start</p>
+                </div>
+                <div className=" flex justify-around">
+                  <p className="w-full text-[1.6vmax] sm:text-[1.6vmin] xs:text-[3.5vmin] -rotate-0 text-white bg-clip-text text-transparent ">To earn PDG, Join in our X.</p>
+                  <div className="w-[3vmax] sm:w-[2vmax] xs:w-[2.2vmax] aspect-[40/39] relative">
+                    <Image
+                      src="/image/p_icon.png"
+                      alt="main logo"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </a>
         </div>
         <ClaimTimer />
-        
+
       </div>
     </div>
   );

@@ -15,9 +15,11 @@ export default {
         balanceBg: 'rgb(0, 0, 0, 0.7)',
         taskBg: 'rgb(2, 116, 116, 0.08)',
         taskBg2: 'rgb(116, 2, 65, 0.08)',
+        boxBg: 'rgb(0, 0, 0, 0.41)',
+        borderBlack: 'rgb(0, 0, 0, 0.3)',
       },
       fontFamily: {
-        franklin: ["var(--font-franklin-gothic)", "sans-serif"],
+        appleNeo: ["var(--font-appleSd-gothic)", "sans-serif"],
       },
       screens: {
         'xs': {'max': '345px'}, // 345px 이하일 때 적용
