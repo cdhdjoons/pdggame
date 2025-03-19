@@ -26,12 +26,12 @@ export default function Intro() {
             {showIntro ? (
                 <motion.div className=" z-[99] w-full h-lvh max-w-[500px] max-h-[1080px] bg-gradient-to-b from-[#BADA8E] to-[#2BAEB2]
               flex justify-center items-center overflow-hidden absolute duration-300 "
-                    initial={{ opacity: 0 }}
+                    initial={false}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <div className="w-[30vmax] sm:w-[30vmax] aspect-[616/182] relative">
+                    <div className="w-[30vmax] sm:w-[28vmax] aspect-[616/182] relative">
                         <Image
                             src="/image/intro_logo.png"
                             alt="main logo"

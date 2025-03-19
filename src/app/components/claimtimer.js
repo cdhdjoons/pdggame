@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Libre_Caslon_Text } from "next/font/google"
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpCircle } from "lucide-react";
 
 const libreCaslon = Libre_Caslon_Text({
     subsets: ["latin"],
@@ -16,12 +17,11 @@ export default function ClaimTimer() {
     const TIMER_DURATION = 21600; // 6 hours in seconds
 
     const [time, setTime] = useState(TIMER_DURATION); // 10초 타이머
-    const [onClaim, setOnClaim] = useState(true);
+    const [onClaim, setOnClaim] = useState(false);
     const [n2o, setN2O] = useState(0);
     const timerRef = useRef(null);
     const hasFinished = useRef(false);
-
-
+    const [inputValue, setInputValue] = useState("");
 
     useEffect(() => {
         // localStorage에서 시작 시간 불러오기
@@ -117,6 +117,9 @@ export default function ClaimTimer() {
 
     const progressWidth = onClaim ? '0%' : `${((TIMER_DURATION - time) / TIMER_DURATION) * 100}%`;
 
+    const activeClaim = () => {
+        setOnClaim(true);
+    }
 
     return (
         <AnimatePresence mode="wait">
@@ -159,22 +162,39 @@ export default function ClaimTimer() {
                     </div>
                 </div>
                 <div className="w-full h-[30%] flex justify-center items-center relative  ">
-                    <div className="w-[90%] py-[2%] h-full sm:w-[90%] relative flex flex-col justify-between rounded-[23px] bg-boxBg">
+                    <div className="w-[90%] py-[2%] h-full sm:w-[90%] relative flex flex-col justify-between items-center rounded-[23px] bg-boxBg">
                         <div className="w-full flex justify-around items-center  ">
                             <p className="  text-[#06F7A1] text-[4.5vmin] sm:text-[2.5vmin] font-bold">Earn 2000 PDG</p>
                             <p className=" text-[#808080] text-[4.5vmin] sm:text-[2.5vmin] font-bold ">{formatTime(time)}</p>
                         </div>
                         <p className="text-white opacity-50 text-center text-[3vmin] sm:text-[1.5vmin]">Enter your favorite restaurant name and get PDG.</p>
                         <div className="w-full relative flex justify-center py-[2%] items-end ">
-                            <div className="w-[65%] h-[1vmin] xs:h-[0.8vmin] sm:h-[0.7vmin] rounded-3xl bg-[#787880] relative ">
+                            <div className="w-[80%] h-[1vmin] xs:h-[0.8vmin] sm:h-[0.7vmin] rounded-3xl bg-[#787880] relative ">
                                 <div className="w-full bg-[#007AFF] rounded-3xl h-full absolute left-0" style={{ width: progressWidth }}></div>
                                 <div className="w-[4vmin] sm:w-[2.5vmin] aspect-[1/1] bg-white rounded-full absolute -top-[150%] xs:-top-[200%] sm:-top-[150%]" style={{ left: progressWidth }}></div>
                             </div>
                         </div>
-                        {onClaim ? <p onClick={startTimer} className=" border-t-[0.5px] border-t-borderBlack text-center text-[#007AFF] text-[2.3vmax] xs:text-[2.35vmax] sm:text-[1.5vmax]
+                        <div className="flex items-center border rounded-full px-[2%] py-[0.5%] shadow-md w-[80%] bg-white">
+                            <input
+                                type="text"
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                                placeholder="eg. Hawker Centre"
+                                className="flex-1 pl-1 outline-none bg-transparent text-gray-600 placeholder-gray-400"
+                            />
+                            {inputValue === "" ? (
+                                <button className="bg-[#787880] text-white rounded-full p-1.5">
+                                    <ArrowUpCircle size={18} />
+                                </button>) :
+                                (<button onClick={activeClaim} className="bg-[#32D74B] text-white rounded-full p-1.5 active:scale-90 transition-transform duration-200">
+                                    <ArrowUpCircle size={18} />
+                                </button>)
+                            }
+                        </div>
+                        {onClaim ? <p onClick={startTimer} className=" w-full border-t-[0.5px] border-t-borderBlack text-center text-[#007AFF] text-[2.3vmax] xs:text-[2.35vmax] sm:text-[1.5vmax]
                         active:scale-90 transition-transform duration-200">Claim now</p>
                             :
-                            <p onClick={startTimer} className=" border-t-[0.5px] border-t-borderBlack text-center text-[#646464] text-[2.3vmax] xs:text-[2.35vmax] sm:text-[1.5vmax]
+                            <p className=" w-full border-t-[0.5px] border-t-borderBlack text-center text-[#646464] text-[2.3vmax] xs:text-[2.35vmax] sm:text-[1.5vmax]
                         active:scale-90 transition-transform duration-200">Claim now</p>}
                     </div>
                 </div>
