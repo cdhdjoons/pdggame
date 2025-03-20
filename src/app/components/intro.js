@@ -31,7 +31,7 @@ export default function Intro() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <div className="w-[30vmax] sm:w-[28vmax] aspect-[616/182] relative">
+                    <div className="w-[30vmax] sm:w-[25vmax] aspect-[616/182] relative">
                         <Image
                             src="/image/intro_logo.png"
                             alt="main logo"
