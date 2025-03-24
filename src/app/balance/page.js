@@ -66,59 +66,116 @@ export default function Balance() {
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
       >
-        <div className="bg-balanceBg w-full h-full max-w-[500px] relative flex flex-col justify-evenly " >
-          <div className=" w-full flex justify-center items-center relative mb-[5%]">
-            <div className="w-[35vmax] max-w-[450px] aspect-[546/401] relative ">
-              <Image
-                src="/image/jet_balancelogo.png"
-                alt="main logo"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <div className=" flex justify-center w-full absolute bottom-[-11%] sm:bottom-[-9%]">
-              <div className=" w-[80%] aspect-[501/113] relative">
-                <Image
-                  src="/image/jet_resourceinfo.png"
-                  alt="ticketIcon"
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <p className="mt-[2px] absolute right-[18%] top-[55%] -translate-y-1/2 text-white text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] [-webkit-text-stroke:0.5px_black]">{n2o >= 1000000 ? `${n2o / 1000000}m` : n2o >= 1000 ? `${n2o / 1000}k` : n2o}</p>
-                <p className="mt-[2px] absolute left-[25%] top-[55%] -translate-y-1/2 text-white text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] [-webkit-text-stroke:0.4px_black]">{tickets}</p>
+        <div className="w-full h-full max-w-[500px] relative flex flex-col justify-evenly " >
+          <div className=" w-full h-[25%] flex justify-center items-center relative mb-[5%] ">
+            <div className=" flex flex-col justify-center items-center w-[90%] h-full bg-boxBg rounded-[23px]">
+              <div className=" w-[90%] h-[50%] relative flex justify-between items-center border-b-[0.5px] border-b-white  ">
+                <div className=" w-[11vmin] sm:w-[6vmin] aspect-[75/75] relative ">
+                  <Image
+                    src="/image/p_icon.png"
+                    alt="meatIcon"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className=" flex flex-col items-start w-[55%] ">
+                  <p className=" text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-white">PDG</p>
+                  <p className=" text-[2vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">PRODIGI Connect</p>
+                </div>
+                <p className=" w-[20%] text-center font-bold text-white text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] ">{n2o >= 1000000 ? `${n2o / 1000000}m` : n2o >= 1000 ? `${n2o / 1000}k` : n2o}</p>
+              </div>
+              <div className=" w-[90%] h-[50%] relative flex justify-between items-center ">
+                <div className=" w-[10vmin] sm:w-[6vmin] aspect-[65/75] relative ">
+                  <Image
+                    src="/image/pdg_ticket.png"
+                    alt="meatIcon"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className=" flex flex-col w-[55%] items-start ">
+                  <p className=" text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-white">Tickets</p>
+                  <p className=" text-[2vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">Gaming Tickets</p>
+                </div>
+                <p className=" w-[20%] text-center font-bold text-white text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] ">{tickets}</p>
               </div>
             </div>
           </div>
-          <p className="w-full text-center text-[4.3vmax] xs:text-[4vmax] sm:text-[4.5vmin] -rotate-2
-        bg-gradient-to-r from-[#57F92F] via-[#A5FEA5] to-[#1560EB] bg-clip-text text-transparent [-webkit-text-stroke:1px_black] ">Get Sky Licence</p>
-          <div className=" w-full py-[1vmin] flex gap-3 flex-col items-center justify-center">
-            <div onClick={() => getTicket(1, 500)} className=" w-[36vmax] sm:w-[40vmin] aspect-[501/161] relative active:scale-90 transition-transform duration-200 ">
-              <Image
-                src="/image/sky1.png"
-                alt="meatIcon"
-                layout="fill"
-                objectFit="cover"
-              />
+          <p className="w-full pl-[10%] text-left text-[4.3vmax] xs:text-[4vmax] sm:text-[4.5vmin] text-black font-bold ">Get Tickets</p>
+          <div className=" w-full h-[55%] py-[1vmin] flex gap-3 flex-col items-center justify-center">
+            <div  className=" w-[90%] px-[5%] h-[30%] flex flex-col items-center relative  bg-boxBg rounded-[23px] ">
+              <div className="w-full h-[60%] flex items-center border-b-[0.5px] border-b-white">
+                <div className=" w-[10vmin] sm:w-[6vmin] aspect-[65/75] relative ">
+                  <Image
+                    src="/image/pdg_ticket.png"
+                    alt="meatIcon"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="w-[80%] flex flex-col ">
+                  <p className=" text-white text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] text-end">Get 1 Ticket for Gaming</p>
+                  <div className=" flex justify-end gap-1 " >
+                    <p className="text-white text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] text-right font-bold ">500</p>
+                    <p className=" text-center text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] 
+        bg-gradient-to-r from-[#BADA8E] to-[#3daeb2] bg-clip-text text-transparent font-bold ">PDG</p>
+                  </div>
+                </div>
+              </div>
+              <div onClick={() => getTicket(1, 500)} 
+              className=" w-full text-center h-[40%] flex justify-center items-center text-[#00FF08]
+               text-[2vmax] xs:text-[1.5vmax] sm:text-[1.7vmin] active:scale-90 transition-transform duration-200"> Get now</div>
             </div>
-            <div onClick={() => getTicket(3, 1300)} className="w-[36vmax] sm:w-[40vmin] aspect-[501/161] relative active:scale-90 transition-transform duration-200 ">
-              <Image
-                src="/image/sky2.png"
-                alt="meatIcon"
-                layout="fill"
-                objectFit="cover"
-              />
+            <div  className=" w-[90%] px-[5%] h-[30%] flex flex-col items-center relative  bg-boxBg rounded-[23px] ">
+              <div className="w-full h-[60%] flex items-center border-b-[0.5px] border-b-white">
+                <div className=" w-[10vmin] sm:w-[6vmin] aspect-[65/75] relative ">
+                  <Image
+                    src="/image/pdg_ticket.png"
+                    alt="meatIcon"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="w-[80%] flex flex-col ">
+                  <p className=" text-white text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] text-end">Get 1 Ticket for Gaming</p>
+                  <div className=" flex justify-end gap-1 " >
+                    <p className="text-white text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] text-right font-bold ">1300</p>
+                    <p className=" text-center text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] 
+        bg-gradient-to-r from-[#BADA8E] to-[#3daeb2] bg-clip-text text-transparent font-bold ">PDG</p>
+                  </div>
+                </div>
+              </div>
+              <div onClick={() => getTicket(3, 1300)} 
+              className=" w-full text-center h-[40%] flex justify-center items-center
+               text-[#00FF08] text-[2vmax] xs:text-[1.5vmax] sm:text-[1.7vmin] active:scale-90 transition-transform duration-200"> Get now</div>
             </div>
-            <div onClick={() => getTicket(5, 2000)} className="w-[36vmax] sm:w-[40vmin] aspect-[501/161] relative active:scale-90 transition-transform duration-200 ">
-              <Image
-                src="/image/sky3.png"
-                alt="meatIcon"
-                layout="fill"
-                objectFit="cover"
-              />
+            <div className=" w-[90%] px-[5%] h-[30%] flex flex-col items-center relative  bg-boxBg rounded-[23px] ">
+              <div className="w-full h-[60%] flex items-center border-b-[0.5px] border-b-white">
+                <div className=" w-[10vmin] sm:w-[6vmin] aspect-[65/75] relative ">
+                  <Image
+                    src="/image/pdg_ticket.png"
+                    alt="meatIcon"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="w-[80%] flex flex-col ">
+                  <p className=" text-white text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] text-end">Get 1 Ticket for Gaming</p>
+                  <div className=" flex justify-end gap-1 " >
+                    <p className="text-white text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] text-right font-bold ">2000</p>
+                    <p className=" text-center text-[2.5vmax] xs:text-[2vmax] sm:text-[2.2vmin] 
+        bg-gradient-to-r from-[#BADA8E] to-[#3daeb2] bg-clip-text text-transparent font-bold ">PDG</p>
+                  </div>
+                </div>
+              </div>
+              <div onClick={() => getTicket(5, 2000)}
+               className=" w-full text-center h-[40%] flex justify-center items-center
+                text-[#00FF08] text-[2vmax] xs:text-[1.5vmax] sm:text-[1.7vmin] active:scale-90 transition-transform duration-200"> Get now</div>
             </div>
+            
           </div>
           {pop && (
-            <div className=" absolute top-[10px] left-1/2 -translate-x-1/2 z-[999] "><Alert severity="error">Need more N2O.</Alert></div>
+            <div className=" absolute top-[10px] left-1/2 -translate-x-1/2 z-[999] "><Alert severity="error">Need more PDG.</Alert></div>
           )}
         </div>
       </motion.div>

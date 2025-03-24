@@ -18,7 +18,7 @@ export default function DailyTask() {
     //invite 버튼 5번 클릭 시 포인트 지급 및 비활성화 관리
     const [inviteCount, setInviteCount] = useState(0);
 
-    const manifestUrl = "https://jetfuelgame.vercel.app/tonconnect-manifest.json";
+    const manifestUrl = "https://pdggame.vercel.app/tonconnect-manifest.json";
 
 
     useEffect(() => {
@@ -51,6 +51,9 @@ export default function DailyTask() {
 
     //daily 클릭 시 상태 업데이트 
     const dailyHandleClick = (index, reward) => {
+        if (disabledDaily[index] === false) {
+            return;
+        }
         const nowN2O = Number(localStorage.getItem("n2o"));
         setDisabledDaily(prev => {
             const newState = [...prev];
@@ -95,146 +98,130 @@ export default function DailyTask() {
     return (
         <TonConnectUIProvider manifestUrl={manifestUrl}>
             <AnimatePresence mode="wait">
-                <motion.div className={` w-full h-full bg-balanceBg`}
+                <motion.div className={` w-full h-full flex flex-col items-center pb-[2%]`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
                 >
-
-                    <div className=" w-full h-full max-w-[500px] relative flex flex-col justify-evenly items-center bg-cover bg-no-repeat " >
-                        <div className={` max-w-[500px] relative `} >
-                            <p className="w-full text-center text-[6vmax] sm:text-[5vmin] -rotate-2
-        bg-gradient-to-r from-[#2FE5F9] via-[#FED9A5] to-[#EB1595] bg-clip-text text-transparent [-webkit-text-stroke:0.6px_black] ">Sky Task</p>
-                        </div>
-                        <div className=" w-full flex flex-col items-center relative ">
-                            <div className=" w-[36vmax] sm:w-[20vmax] aspect-[509/170] relative">
+                    <div className={`w-full max-w-[500px] px-[5%] relative flex flex-col `} >
+                        <p className="w-full text-left text-[5vmax] sm:text-[4vmin] font-bold text-white ">Task List</p>
+                        <p className="w-full text-left text-[2vmax] sm:text-[2vmin] text-black ">Earn PDG and Play Game</p>
+                    </div>
+                    <div className=" w-[90%] h-full max-w-[500px] pb-[10%] flex flex-col justify-center items-center bg-boxBg rounded-[23px]" >
+                        <div className=" w-full flex flex-col gap-[2%] items-center relative ">
+                            <div className=" w-[30vmax] sm:w-[20vmax] aspect-[616/182] relative ">
                                 <Image
-                                    src="/image/jet_taskinfo.png"
+                                    src="/image/intro_logo.png"
                                     alt="main logo"
                                     layout="fill"
                                     objectFit="cover"
                                 />
-                                <p className="absolute top-[18%] left-[8%] text-[2.6vmax] sm:text-[2vmax] text-[#D0D0D0] font-normal">DAILY TASK</p>
-                                <p className="absolute bottom-[5%] left-[8%] text-[2vmax] sm:text-[1.3vmax] text-[#FFB625] font-normal">EARN EVERYDAY</p>
-                                <p className="absolute bottom-[5%] right-[8%] text-[2vmax] sm:text-[1.3vmax] text-[#D0D0D0] font-normal">{remainHours}/24h</p>
                             </div>
-                            {disabledDaily[0] ? <div onClick={() => dailyHandleClick(0, 100)} className=" bg-taskBg w-[36vmax] sm:w-[20vmax] aspect-[439/101] relative active:scale-90 transition-transform duration-200">
-                                <Image
-                                    src="/image/jet_dailyreward1.png"
-                                    alt="main logo"
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                            </div> :
-                                <div className=" bg-taskBg w-[36vmax] sm:w-[20vmax] aspect-[439/101] relative active:scale-90 transition-transform duration-200">
+                            <p className=" text-[1.5vmax] sm:text-[1.3vmax] text-[#00FF08] font-bold">{remainHours}/24h</p>
+                            <div className=" w-[90%] relative flex justify-between items-center">
+                                <div className=" w-[11vmin] sm:w-[6vmin] aspect-[75/75] relative ">
                                     <Image
-                                        src="/image/jet_dailyreward1_off.png"
-                                        alt="main logo"
+                                        src="/image/pdg_daily.png"
+                                        alt="meatIcon"
                                         layout="fill"
                                         objectFit="cover"
                                     />
-                                </div>}
-                            <div className="relative my-[1.5%] w-[36vmax] sm:w-[20vmax] max-w-[450px] aspect-[482/5]">
-                                <Image
-                                    src="/image/jet_taskpartition.png"
-                                    alt="main logo"
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
+                                </div>
+                                <div className=" flex flex-col items-start w-[55%] ">
+                                    <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-white">Daily Task</p>
+                                    <p className=" text-[1.5vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">Earn Every day</p>
+                                </div>
+                                <p className=" w-[20%] text-center font-bold text-[#66B6FF] text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] ">+</p>
                             </div>
-                            {disabledDaily[1] ?
-                                <a href="https://x.com/JFT_official_X" target="_blank" rel="noopener noreferrer">
-                                    <div onClick={() => dailyHandleClick(1, 1000)} className=" bg-taskBg w-[36vmax] sm:w-[20vmax] aspect-[439/101] relative active:scale-90 transition-transform duration-200">
+                            <div className=" w-[90%] px-[5%] flex flex-col justify-center items-center bg-white rounded-[23px]">
+                                <div className=" w-full flex justify-between items-center border-b-[0.5px] border-b-black py-[5%]">
+                                    <div className=" w-[11vmin] sm:w-[6vmin] aspect-[75/75] relative ">
                                         <Image
-                                            src="/image/jet_dailyreward2.png"
-                                            alt="main logo"
+                                            src="/image/pdg_daily.png"
+                                            alt="meatIcon"
                                             layout="fill"
                                             objectFit="cover"
                                         />
                                     </div>
-                                </a>
-                                :
-                                <div className="bg-taskBg w-[36vmax] sm:w-[20vmax] aspect-[439/101] relative active:scale-90 transition-transform duration-200">
+                                    <div className=" flex flex-col items-start w-[55%] ">
+                                        <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-black">Daily Reward</p>
+                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">100 PDG</p>
+                                    </div>
+                                    <div className={` w-[20%] bg-[#767DFF] h-[50%] rounded-3xl relative duration-300 transition-all ${disabledDaily[0] ? 'opacity-100' : 'opacity-20'}`}>
+                                        <div onClick={() => dailyHandleClick(0, 100)} className={`w-[40%] duration-300 aspect-[1/1] transition-all rounded-full bg-white absolute top-[50%] -translate-y-[50%] ${disabledDaily[0] ? "-translate-x-[100%] left-full" : "translate-x-0 left-0"}`}></div>
+                                    </div>
+                                </div>
+                                <div className=" w-full flex justify-between items-center py-[5%] ">
+                                    <div className=" w-[11vmin] sm:w-[6vmin] aspect-[75/75] relative ">
+                                        <Image
+                                            src="/image/pdg_daily.png"
+                                            alt="meatIcon"
+                                            layout="fill"
+                                            objectFit="cover"
+                                        />
+                                    </div>
+                                    <div className=" flex flex-col items-start w-[55%] ">
+                                        <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-black">RT our Post</p>
+                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">1k PDG</p>
+                                    </div>
+                                    <a href="https://x.com/PDG_official_X" target="_blank" rel="noopener noreferrer" className={` w-[20%] bg-[#767DFF] h-[50%] rounded-3xl relative duration-300 transition-all ${disabledDaily[1] ? 'opacity-100' : 'opacity-20'}`}>
+                                        <div onClick={() => dailyHandleClick(1, 1000)} className={`w-[40%] duration-300 aspect-[1/1] transition-all rounded-full bg-white absolute top-[50%] -translate-y-[50%] ${disabledDaily[1] ? "-translate-x-[100%] left-full" : "translate-x-0 left-0"}`}></div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className=" w-[90%] relative flex justify-between items-center">
+                                <div className=" w-[11vmin] sm:w-[6vmin] aspect-[75/75] relative ">
                                     <Image
-                                        src="/image/jet_dailyreward2_off.png"
-                                        alt="main logo"
+                                        src="/image/pdg_option.png"
+                                        alt="meatIcon"
                                         layout="fill"
                                         objectFit="cover"
                                     />
                                 </div>
-                            }
-
-                        </div>
-
-                        <div className=" w-full flex flex-col items-center relative">
-                            <div className=" w-[36vmax] sm:w-[20vmax] aspect-[509/170] relative">
-                                <Image
-                                    src="/image/jet_taskinfo2.png"
-                                    alt="main logo"
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                                <p className="absolute top-[18%] left-[8%] text-[2.6vmax] sm:text-[2vmax] text-[#D0D0D0] font-bold">OPTION TASK</p>
-                                <p className="absolute bottom-[5%] left-[8%] text-[2vmax] sm:text-[1.3vmax] text-[#FFB625] font-normal">EARN 1 time</p>
-
-                            </div>
-                            {disabledTask[0] ? <a href="https://x.com/JFT_official_X" target="_blank" rel="noopener noreferrer">
-                                <div onClick={() => handleClick(0, 1000)} className=" bg-taskBg2 w-[36vmax] sm:w-[20vmax] aspect-[438/101] relative active:scale-90 transition-transform duration-200">
-                                    <Image
-                                        src="/image/jet_taskx.png"
-                                        alt="main logo"
-                                        layout="fill"
-                                        objectFit="cover"
-                                    />
-                                </div></a> :
-                                <div className=" bg-taskBg2 w-[36vmax] sm:w-[20vmax] aspect-[438/101] relative active:scale-90 transition-transform duration-200">
-                                    <Image
-                                        src="/image/jet_taskx_off.png"
-                                        alt="main logo"
-                                        layout="fill"
-                                        objectFit="cover"
-                                    />
-                                </div>}
-                            <div className="relative my-[1.5%] w-[36vmax] sm:w-[20vmax] max-w-[450px] aspect-[482/5]">
-                                <Image
-                                    src="/image/jet_taskpartition.png"
-                                    alt="main logo"
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                            </div>
-                            <Wallet />
-                            <div className="relative my-[1.5%] w-[36vmax] sm:w-[20vmax] max-w-[450px] aspect-[482/5]">
-                                <Image
-                                    src="/image/jet_taskpartition.png"
-                                    alt="main logo"
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                            </div>
-                            {disabledTask[1] ?
-                                <div onClick={() => handleClick(1, 5000)} className=" bg-taskBg2 w-[36vmax] sm:w-[20vmax] aspect-[438/101] relative active:scale-90 transition-transform duration-200">
-                                    <Image
-                                        src="/image/jet_taskinvite.png"
-                                        alt="main logo"
-                                        layout="fill"
-                                        objectFit="cover"
-                                    />
-                                    <p className="absolute top-[5%] right-[10.5%] text-[2.2vmax] sm:text-[1.2vmin] text-[#D0D0D0] font-normal">{inviteCount}/5</p>
+                                <div className=" flex flex-col items-start w-[55%] ">
+                                    <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-white">Option Task</p>
+                                    
                                 </div>
-                                :
-                                <div className=" bg-taskBg2 w-[36vmax] sm:w-[20vmax] aspect-[438/101] relative active:scale-90 transition-transform duration-200">
-                                    <Image
-                                        src="/image/jet_taskinvite_off.png"
-                                        alt="main logo"
-                                        layout="fill"
-                                        objectFit="cover"
-                                    />
-                                    <p className="absolute bottom-[5%] right-[5%] text-[2.5vmax] sm:text-[1.5vmin] text-[#D0D0D0] font-bold">5/5</p>
+                                <p className=" w-[20%] text-center font-bold text-[#66B6FF] text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] ">+</p>
+                            </div>
+                            <div className=" w-[90%] px-[5%] flex flex-col justify-center items-center bg-white rounded-[23px]">
+                                <div className=" w-full flex justify-between items-center border-b-[0.5px] border-b-black py-[5%]">
+                                    <div className=" w-[11vmin] sm:w-[6vmin] aspect-[75/75] relative ">
+                                        <Image
+                                            src="/image/pdg_option.png"
+                                            alt="meatIcon"
+                                            layout="fill"
+                                            objectFit="cover"
+                                        />
+                                    </div>
+                                    <div className=" flex flex-col items-start w-[55%] ">
+                                        <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-black">Follow X</p>
+                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">1K PDG</p>
+                                    </div>
+                                    <a href="https://x.com/PDG_official_X" target="_blank" rel="noopener noreferrer" className={` w-[20%] bg-[#767DFF] h-[50%] rounded-3xl relative duration-300 transition-all ${disabledTask[0] ? 'opacity-100' : 'opacity-20'}`}>
+                                        <div onClick={() => handleClick(0, 1000)} className={`w-[40%] duration-300 aspect-[1/1] transition-all rounded-full bg-white absolute top-[50%] -translate-y-[50%] ${disabledTask[0] ? "-translate-x-[100%] left-full" : "translate-x-0 left-0"}`}></div>
+                                    </a>
                                 </div>
-                            }
-
+                                <div className=" w-full flex justify-between items-center py-[5%] ">
+                                    <div className=" w-[11vmin] sm:w-[6vmin] aspect-[75/75] relative ">
+                                        <Image
+                                            src="/image/pdg_option.png"
+                                            alt="meatIcon"
+                                            layout="fill"
+                                            objectFit="cover"
+                                        />
+                                    </div>
+                                    <div className=" flex flex-col items-start w-[55%] ">
+                                        <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-black">Invite 5 users</p>
+                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">5k PDG | {inviteCount}/5users</p>
+                                    </div>
+                                    <div className={` w-[20%] bg-[#767DFF] h-[50%] rounded-3xl relative duration-300 transition-all ${disabledTask[1] ? 'opacity-100' : 'opacity-20'}`}>
+                                        <div onClick={() => handleClick(1, 5000)} className={`w-[40%] duration-300 aspect-[1/1] transition-all rounded-full bg-white absolute top-[50%] -translate-y-[50%] ${disabledTask[1] ? "-translate-x-[100%] left-full" : "translate-x-0 left-0"}`}></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </motion.div>

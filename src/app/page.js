@@ -35,7 +35,7 @@ export default function Home() {
                   </div>
                   <div className=" flex justify-around">
                     <p className="w-full text-[4vmin] sm:text-[1.6vmin] xs:text-[3.5vmin] -rotate-0 text-white bg-clip-text text-transparent ">To earn PDG, Join in our X.</p>
-                    <div className="w-[7vmin] sm:w-[4vmin] xs:w-[6vmin] aspect-[40/39] relative">
+                    <div className="w-[7vmin] sm:w-[4vmin] xs:w-[6vmin] aspect-[75/75] relative">
                       <Image
                         src="/image/p_icon.png"
                         alt="main logo"
